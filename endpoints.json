@@ -1,0 +1,221 @@
+{
+  "GET /api": {
+    "description": "Serves up a JSON representation of all the available endpoints of the API"
+  },
+  "GET /api/parks": {
+    "description": "Serves an array of all parks",
+    "queries": [],
+    "exampleResponse": {
+      "parks": [
+        {
+          "park_id": 1,
+          "park_name": "Dreamland Park",
+          "year_opened": 1987,
+          "annual_attendance": 1200000
+        }
+      ]
+    }
+  },
+  "GET /api/parks/:park_id": {
+    "description": "Serves an object representing a single park by its ID",
+    "queries": [],
+    "exampleResponse": {
+      "park_id": 1,
+      "park_name": "Dreamland Park",
+      "year_opened": 1987,
+      "annual_attendance": 1200000
+    }
+  },
+  "GET /api/rides": {
+    "description": "Serves an array of all rides",
+    "queries": ["park_id", "sort_by", "order"],
+    "exampleResponse": {
+      "rides": [
+        {
+          "ride_id": 5,
+          "ride_name": "Thunder Mountain",
+          "year_opened": 1995,
+          "votes": 102,
+          "park_id": 1
+        }
+      ]
+    }
+  },
+  "GET /api/rides/:ride_id": {
+    "description": "Serves a ride object by ride_id",
+    "queries": [],
+    "exampleResponse": {
+      "ride_id": 5,
+      "ride_name": "Thunder Mountain",
+      "year_opened": 1995,
+      "votes": 102,
+      "park_id": 1
+    }
+  },
+  "PATCH /api/rides/:ride_id": {
+    "description": "Updates a ride's votes count",
+    "queries": ["inc_votes"],
+    "exampleResponse": {
+      "ride_id": 5,
+      "ride_name": "Thunder Mountain",
+      "year_opened": 1995,
+      "votes": 112,
+      "park_id": 1
+    }
+  },
+  "GET /api/foods": {
+    "description": "Serves an array of all foods",
+    "queries": ["vegan_option"],
+    "exampleResponse": {
+      "foods": [
+        {
+          "food_id": 2,
+          "food_name": "Vegan Burger",
+          "vegan_option": true
+        }
+      ]
+    }
+  },
+  "GET /api/foods/:food_id": {
+    "description": "Serves a food object by food_id",
+    "queries": [],
+    "exampleResponse": {
+      "food_id": 2,
+      "food_name": "Vegan Burger",
+      "vegan_option": true
+    }
+  },
+  "GET /api/stalls": {
+    "description": "Serves an array of all stalls",
+    "queries": ["park_id"],
+    "exampleResponse": {
+      "stalls": [
+        {
+          "stall_id": 3,
+          "stall_name": "Pizza Palace",
+          "park_id": 1
+        }
+      ]
+    }
+  },
+  "GET /api/stalls/:stall_id": {
+    "description": "Serves a stall object by stall_id",
+    "queries": [],
+    "exampleResponse": {
+      "stall_id": 3,
+      "stall_name": "Pizza Palace",
+      "park_id": 1
+    }
+  },
+  "GET /api/stalls/:stall_id/foods": {
+    "description": "Serves an array of all foods served at a given stall",
+    "queries": [],
+    "exampleResponse": {
+      "foods": [
+        {
+          "food_id": 2,
+          "food_name": "Vegan Burger",
+          "vegan_option": true
+        },
+        {
+          "food_id": 3,
+          "food_name": "Fries",
+          "vegan_option": true
+        }
+      ]
+    }
+  },
+  "GET /api/foods/:food_id/stalls": {
+    "description": "Serves an array of all stalls serving a given food item",
+    "queries": [],
+    "exampleResponse": {
+      "stalls": [
+        {
+          "stall_id": 3,
+          "stall_name": "Pizza Palace",
+          "park_id": 1
+        }
+      ]
+    }
+  },
+  "POST /api/rides/:ride_id/vote": {
+    "description": "Increment or decrement the votes for a specific ride",
+    "queries": ["inc_votes"],
+    "exampleResponse": {
+      "ride_id": 5,
+      "ride_name": "Thunder Mountain",
+      "year_opened": 1995,
+      "votes": 113,
+      "park_id": 1
+    }
+  },
+  "POST /api/parks": {
+    "description": "Adds a new park",
+    "queries": [],
+    "exampleResponse": {
+      "park_id": 4,
+      "park_name": "Adventure Kingdom",
+      "year_opened": 2005,
+      "annual_attendance": 800000
+    }
+  },
+  "POST /api/foods": {
+    "description": "Adds a new food",
+    "queries": [],
+    "exampleResponse": {
+      "food_id": 6,
+      "food_name": "Hot Dog",
+      "vegan_option": false
+    }
+  },
+  "POST /api/rides": {
+    "description": "Adds a new ride",
+    "queries": [],
+    "exampleResponse": {
+      "ride_id": 7,
+      "ride_name": "Splash Down",
+      "year_opened": 2010,
+      "votes": 0,
+      "park_id": 2
+    }
+  },
+  "POST /api/stalls": {
+    "description": "Adds a new stall",
+    "queries": [],
+    "exampleResponse": {
+      "stall_id": 5,
+      "stall_name": "Corn Dog Cart",
+      "park_id": 2
+    }
+  },
+  "PATCH /api/parks/:park_id": {
+    "description": "Updates a park's details",
+    "queries": [],
+    "exampleResponse": {
+      "park_id": 1,
+      "park_name": "Dreamland Park Updated",
+      "year_opened": 1987,
+      "annual_attendance": 1300000
+    }
+  },
+  "DELETE /api/rides/:ride_id": {
+    "description": "Deletes the specified ride",
+    "queries": [],
+    "exampleResponse": "no content"
+  },
+  "DELETE /api/foods/:food_id": {
+    "description": "Deletes the specified food",
+    "queries": [],
+    "exampleResponse": "no content"
+  },
+  "DELETE /api/parks/:park_id": {
+    "description": "Deletes the specified park",
+    "queries": [],
+    "exampleResponse": "no content"
+  },
+  "DELETE /api/stalls/:stall_id": {
+    "description": "Deletes the specified stall",
+    "queries": [],
+    "exampleResponse": "no content"
+  }
+}
